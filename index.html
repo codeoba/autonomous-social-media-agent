@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialAgentAI - Autonomous Social Media Management Suite</title>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Outfit & Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Toast Notifications Popups -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <div class="dashboard-wrapper">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <div class="brand-logo"><i class="fas fa-robot"></i></div>
+                <div class="brand-info">
+                    <h1>SocialAgentAI</h1>
+                    <span>Autonomous Manager</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <button class="tab-btn active" data-tab="tab-dashboard">
+                    <i class="fas fa-chart-line"></i> <span>Dashboard & Stats</span>
+                </button>
+                <button class="tab-btn" data-tab="tab-trends">
+                    <i class="fas fa-globe-americas"></i> <span>Trend Crawler Hub</span>
+                </button>
+                <button class="tab-btn" data-tab="tab-queue">
+                    <i class="fas fa-calendar-alt"></i> <span>Content Calendar</span>
+                </button>
+                <button class="tab-btn" data-tab="tab-inbox">
+                    <i class="fas fa-reply-all"></i> <span>DM & Auto-Replies</span>
+                </button>
+                <button class="tab-btn" data-tab="tab-integrations">
+                    <i class="fas fa-network-wired"></i> <span>Platform Connections</span>
+                </button>
+                <button class="tab-btn" data-tab="tab-logs">
+                    <i class="fas fa-terminal"></i> <span>Agent Decision Logs</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button id="theme-toggle" class="theme-btn">
+                    <i class="fas fa-sun"></i> <span>Mode Toggle</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Workspace Area -->
+        <main class="main-content">
+            <!-- Header bar -->
+            <header class="main-header">
+                <div class="header-title">
+                    <h2>Msimamizi Maalum wa Mitandao (Autonomous Agentic CRM)</h2>
+                    <p>AI agent monitors trends, drafts posts, schedules queue pipelines, and auto-responds to inbox comments.</p>
+                </div>
+                <div class="header-status">
+                    <span class="status-indicator online"></span>
+                    <span>AI Status: Monitoring Trends</span>
+                </div>
+            </header>
+
+            <div class="content-body">
+                <!-- 1. DASHBOARD TAB -->
+                <section id="tab-dashboard" class="tab-panel active">
+                    <div class="stats-grid">
+                        <div class="stat-card card-glow-green">
+                            <div class="stat-icon"><i class="fas fa-users"></i></div>
+                            <div class="stat-info">
+                                <h3>Total Followers</h3>
+                                <p id="stat-followers">48,250</p>
+                                <span class="trend up"><i class="fas fa-arrow-up"></i> +12% growth</span>
+                            </div>
+                        </div>
+                        <div class="stat-card card-glow-blue">
+                            <div class="stat-icon"><i class="fas fa-chart-bar"></i></div>
+                            <div class="stat-info">
+                                <h3>Engagement Rate</h3>
+                                <p id="stat-engagement">8.4%</p>
+                                <span class="trend up"><i class="fas fa-arrow-up"></i> +0.6% this week</span>
+                            </div>
+                        </div>
+                        <div class="stat-card card-glow-purple">
+                            <div class="stat-icon"><i class="fas fa-mouse-pointer"></i></div>
+                            <div class="stat-info">
+                                <h3>Link Clicks</h3>
+                                <p id="stat-clicks">3,480</p>
+                                <span class="trend up"><i class="fas fa-arrow-up"></i> +14.2% AI link value</span>
+                            </div>
+                        </div>
+                        <div class="stat-card card-glow-orange">
+                            <div class="stat-icon"><i class="fas fa-history"></i></div>
+                            <div class="stat-info">
+                                <h3>Auto Replies Sent</h3>
+                                <p id="stat-replies">142</p>
+                                <span class="trend up"><i class="fas fa-check"></i> 100% resolution</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SVG Charts Grid -->
+                    <div class="charts-layout">
+                        <div class="dashboard-card chart-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-chart-area"></i> Social Media Growth & Reach Curve (Weekly)</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-container">
+                                    <svg viewBox="0 0 500 150" class="svg-graph">
+                                        <defs>
+                                            <linearGradient id="chart-grad" x1="0" y1="0" x2="0" y2="1">
+                                                <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.3"></stop>
+                                                <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.0"></stop>
+                                            </linearGradient>
+                                        </defs>
+                                        <path d="M 10,130 C 100,110 150,90 200,70 C 250,50 350,60 490,20 L 490,140 L 10,140 Z" fill="url(#chart-grad)"></path>
+                                        <path d="M 10,130 C 100,110 150,90 200,70 C 250,50 350,60 490,20" fill="none" stroke="#3b82f6" stroke-width="3"></path>
+                                        <line x1="10" y1="140" x2="490" y2="140" stroke="var(--border-color)"></line>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="dashboard-card scorecard-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-hashtag"></i> Post Channel breakdown</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="scorecard-grid">
+                                    <div class="score-item"><span>Instagram Reach</span><strong>24.2K</strong></div>
+                                    <div class="score-item"><span>LinkedIn Followers</span><strong>12.8K</strong></div>
+                                    <div class="score-item"><span>Twitter/X Impressions</span><strong>52.4K</strong></div>
+                                    <div class="score-item"><span>Facebook Engagement</span><strong>4.8K</strong></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live feed -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-share-alt"></i> Active Posts Published by AI Agent</h3>
+                        </div>
+                        <div class="card-body table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Post ID</th>
+                                        <th>Date</th>
+                                        <th>Platform</th>
+                                        <th>Content Preview</th>
+                                        <th>Engagement</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="active-posts-list">
+                                    <!-- Injected -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. TREND CRAWLER HUB -->
+                <section id="tab-trends" class="tab-panel">
+                    <div class="trends-layout">
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-spider"></i> Detected Viral Trends & Topic Crawlers</h3>
+                            </div>
+                            <div class="card-body">
+                                <p class="help-text">AI Agent inazunguka mitandaoni na kugundua mada zinazovuma kwa sasa. Chagua mada moja ili kumruhusu Agent kuandaa post kiotomatiki:</p>
+                                <div class="trends-list-grid" id="trends-list-container">
+                                    <!-- Dynamic trends list -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Post Creator Box -->
+                        <div class="dashboard-card form-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-pen-nib"></i> AI Post Generation Playground</h3>
+                            </div>
+                            <div class="card-body">
+                                <form id="generate-post-form" class="styled-form">
+                                    <div class="form-group">
+                                        <label for="post-topic">Mada Iliyochaguliwa (Topic)</label>
+                                        <input type="text" id="post-topic" readonly required>
+                                    </div>
+                                    <div class="form-grid">
+                                        <div class="form-group">
+                                            <label for="post-platform">Mitandao Lengwa (Platform)</label>
+                                            <select id="post-platform">
+                                                <option value="instagram" selected>Instagram</option>
+                                                <option value="linkedin">LinkedIn</option>
+                                                <option value="twitter">X / Twitter</option>
+                                                <option value="facebook">Facebook</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="post-tone">Sauti ya Majibu (Tone)</label>
+                                            <select id="post-tone">
+                                                <option value="professional" selected>Kikazi (Professional)</option>
+                                                <option value="friendly">Urafiki (Friendly)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <button type="button" id="trigger-gen-btn" class="submit-btn" style="width: 100%; margin-top: 10px;"><i class="fas fa-magic"></i> Generate Post Copy via AI</button>
+
+                                    <!-- Result Preview Card -->
+                                    <div class="post-preview-card" id="post-preview-card" style="display: none;">
+                                        <h4>Draft Generated Preview:</h4>
+                                        <div class="preview-image-box">
+                                            <img id="preview-image" src="" alt="AI Mock Image">
+                                        </div>
+                                        <p id="preview-text"></p>
+                                        <button type="submit" class="submit-btn btn-sm"><i class="fas fa-calendar-check"></i> Approve & Add to Queue</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. CONTENT CALENDAR QUEUE -->
+                <section id="tab-queue" class="tab-panel">
+                    <div class="calendar-layout">
+                        <!-- Left pane: The schedule list -->
+                        <div class="dashboard-card list-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-list-ol"></i> Scheduled Post Queue Pipeline</h3>
+                            </div>
+                            <div class="card-body">
+                                <div id="queue-list" class="queue-list-container">
+                                    <!-- Injected -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right pane: Calendar Grid view -->
+                        <div class="dashboard-card calendar-grid-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-calendar-alt"></i> Weekly Visual Scheduler</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="weekly-calendar-grid">
+                                    <div class="calendar-day"><strong>Monday</strong><div class="day-posts" id="day-mon"></div></div>
+                                    <div class="calendar-day"><strong>Tuesday</strong><div class="day-posts" id="day-tue"></div></div>
+                                    <div class="calendar-day"><strong>Wednesday</strong><div class="day-posts" id="day-wed"></div></div>
+                                    <div class="calendar-day"><strong>Thursday</strong><div class="day-posts" id="day-thu"></div></div>
+                                    <div class="calendar-day"><strong>Friday</strong><div class="day-posts" id="day-fri"></div></div>
+                                    <div class="calendar-day"><strong>Saturday</strong><div class="day-posts" id="day-sat"></div></div>
+                                    <div class="calendar-day"><strong>Sunday</strong><div class="day-posts" id="day-sun"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. DM & COMMENT AUTO-REPLY SIMULATOR -->
+                <section id="tab-inbox" class="tab-panel">
+                    <div class="inbox-simulator-layout">
+                        <!-- Left pane: Platform Post Preview containing comments -->
+                        <div class="post-comments-mockup">
+                            <div class="instagram-post-skin">
+                                <div class="skin-header">
+                                    <div class="user-avatar"><i class="fas fa-user-circle"></i></div>
+                                    <span>yourbrand_official</span>
+                                </div>
+                                <div class="skin-image">
+                                    <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=400&q=80" alt="Post graphic">
+                                </div>
+                                <div class="skin-caption">
+                                    <p><strong>yourbrand_official</strong> Embracing AI automation is key to business growth in 2026! 🚀 Scale your operations today.</p>
+                                </div>
+                                <div class="skin-comments-section" id="simulated-comments-box">
+                                    <!-- Comments stream -->
+                                </div>
+                                <div class="skin-comment-input">
+                                    <input type="text" id="sim-user-handle" placeholder="@username" value="@juma_tz">
+                                    <input type="text" id="sim-comment-text" placeholder="Andika comment ya majaribio hapa (mfano: 'bei gani?')...">
+                                    <button id="sim-post-comment-btn"><i class="fas fa-paper-plane"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right pane: Real-time decision logs for comment replies -->
+                        <div class="inbox-decisions-card">
+                            <div class="dashboard-card">
+                                <div class="card-header">
+                                    <h3><i class="fas fa-cogs"></i> AI Auto-Responder Decision Logs</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="cot-explanation">
+                                        <p>Hapa unaona jinsi AI inavyosoma comment mpya ya mteja, kutambua Nia (Intent), kufanya maamuzi, na kuandika jibu la mwingiliano (auto-reply) papo hapo:</p>
+                                    </div>
+                                    <div id="comment-logs-feed" class="logs-feed">
+                                        <!-- Logs dynamically appended -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 5. INTEGRATIONS TAB -->
+                <section id="tab-integrations" class="tab-panel">
+                    <div class="integrations-grid">
+                        <div class="integration-card connected">
+                            <div class="card-header">
+                                <h4><i class="fab fa-instagram"></i> Instagram Business</h4>
+                                <span class="badge bg-success">CONNECTED</span>
+                            </div>
+                            <div class="card-body">
+                                <p>AI is authorized to post images and reply to media comments automatically.</p>
+                                <button class="btn btn-sm btn-danger disconnect-btn">Disconnect API</button>
+                            </div>
+                        </div>
+                        <div class="integration-card connected">
+                            <div class="card-header">
+                                <h4><i class="fab fa-linkedin"></i> LinkedIn Professional</h4>
+                                <span class="badge bg-success">CONNECTED</span>
+                            </div>
+                            <div class="card-body">
+                                <p>AI is authorized to share articles and professional updates to company profiles.</p>
+                                <button class="btn btn-sm btn-danger disconnect-btn">Disconnect API</button>
+                            </div>
+                        </div>
+                        <div class="integration-card connected">
+                            <div class="card-header">
+                                <h4><i class="fab fa-twitter"></i> X / Twitter Enterprise</h4>
+                                <span class="badge bg-success">CONNECTED</span>
+                            </div>
+                            <div class="card-body">
+                                <p>AI is authorized to post tweets, crawl viral hashtags, and auto-reply to mentions.</p>
+                                <button class="btn btn-sm btn-danger disconnect-btn">Disconnect API</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 6. AGENT DECISION LOGS -->
+                <section id="tab-logs" class="tab-panel">
+                    <div class="dashboard-card logs-full-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-terminal"></i> Agent Action & Event logs Console</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="logs-actions">
+                                <button onclick="document.getElementById('console-log-box').innerHTML = '';" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i> Safisha Magogo</button>
+                            </div>
+                            <div class="logs-console" id="console-log-box">
+                                <p class="console-head">--- SocialAgentAI Monitor Logging Initiated ---</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Script assets -->
+    <script src="agent-nlp.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
