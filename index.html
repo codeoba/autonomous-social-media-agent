@@ -40,6 +40,12 @@
                 <button class="tab-btn" data-tab="tab-inbox">
                     <i class="fas fa-reply-all"></i> <span>DM & Auto-Replies</span>
                 </button>
+                <button class="tab-btn" data-tab="tab-competitors">
+                    <i class="fas fa-eye"></i> <span>Competitor Monitor</span>
+                </button>
+                <button class="tab-btn" data-tab="tab-revenue">
+                    <i class="fas fa-hand-holding-usd"></i> <span>Social Commerce</span>
+                </button>
                 <button class="tab-btn" data-tab="tab-integrations">
                     <i class="fas fa-network-wired"></i> <span>Platform Connections</span>
                 </button>
@@ -112,6 +118,7 @@
                         <div class="dashboard-card chart-card">
                             <div class="card-header">
                                 <h3><i class="fas fa-chart-area"></i> Social Media Growth & Reach Curve (Weekly)</h3>
+                                <button id="export-analytics-btn" class="submit-btn btn-sm"><i class="fas fa-file-csv"></i> Export Data</button>
                             </div>
                             <div class="card-body">
                                 <div class="chart-container">
@@ -132,14 +139,14 @@
                         
                         <div class="dashboard-card scorecard-card">
                             <div class="card-header">
-                                <h3><i class="fas fa-hashtag"></i> Post Channel breakdown</h3>
+                                <h3><i class="fas fa-face-smile"></i> Customer Sentiment Trend</h3>
                             </div>
                             <div class="card-body">
-                                <div class="scorecard-grid">
-                                    <div class="score-item"><span>Instagram Reach</span><strong>24.2K</strong></div>
-                                    <div class="score-item"><span>LinkedIn Followers</span><strong>12.8K</strong></div>
-                                    <div class="score-item"><span>Twitter/X Impressions</span><strong>52.4K</strong></div>
-                                    <div class="score-item"><span>Facebook Engagement</span><strong>4.8K</strong></div>
+                                <div class="chart-container">
+                                    <svg viewBox="0 0 500 150" class="svg-graph">
+                                        <path d="M 10,100 Q 150,20 300,120 T 490,50" fill="none" stroke="#10b981" stroke-width="3"></path>
+                                        <line x1="10" y1="140" x2="490" y2="140" stroke="var(--border-color)"></line>
+                                    </svg>
                                 </div>
                             </div>
                         </div>
@@ -188,7 +195,7 @@
                         <!-- Post Creator Box -->
                         <div class="dashboard-card form-card">
                             <div class="card-header">
-                                <h3><i class="fas fa-pen-nib"></i> AI Post Generation Playground</h3>
+                                <h3><i class="fas fa-pen-nib"></i> AI Post Generation & Image Editor</h3>
                             </div>
                             <div class="card-body">
                                 <form id="generate-post-form" class="styled-form">
@@ -214,16 +221,43 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <button type="button" id="trigger-gen-btn" class="submit-btn" style="width: 100%; margin-top: 10px;"><i class="fas fa-magic"></i> Generate Post Copy via AI</button>
 
-                                    <!-- Result Preview Card -->
+                                    <!-- Interactive Image Editor Settings -->
+                                    <div class="form-group border-top-settings">
+                                        <label for="image-banner-text">Maandishi Juu ya Picha (Image Banner Text)</label>
+                                        <input type="text" id="image-banner-text" placeholder="Mfano: BOMA AI NEW UPDATE 🚀">
+                                    </div>
+
+                                    <button type="button" id="trigger-gen-btn" class="submit-btn" style="width: 100%; margin-top: 10px;"><i class="fas fa-magic"></i> Generate Post Copy & Image via AI</button>
+
+                                    <!-- A/B Testing & Result Preview Card -->
                                     <div class="post-preview-card" id="post-preview-card" style="display: none;">
-                                        <h4>Draft Generated Preview:</h4>
-                                        <div class="preview-image-box">
-                                            <img id="preview-image" src="" alt="AI Mock Image">
+                                        <div class="forecast-badge-container">
+                                            <span class="forecast-badge"><i class="fas fa-chart-line"></i> Success Forecast: <strong id="forecast-value">0%</strong></span>
+                                            <span class="category-badge" id="category-tag-badge">Educational</span>
                                         </div>
-                                        <p id="preview-text"></p>
-                                        <button type="submit" class="submit-btn btn-sm"><i class="fas fa-calendar-check"></i> Approve & Add to Queue</button>
+                                        
+                                        <!-- Image Banner Editor Preview -->
+                                        <div class="preview-image-box" style="position: relative;">
+                                            <img id="preview-image" src="" alt="AI Mock Image">
+                                            <div id="preview-image-overlay" class="image-text-overlay">BANNER TEXT</div>
+                                        </div>
+
+                                        <!-- A/B testing selections -->
+                                        <div class="ab-testing-options">
+                                            <label class="ab-option-container">
+                                                <input type="radio" name="ab-test-select" value="A" checked>
+                                                <span class="ab-label">Version A (Standard value-add)</span>
+                                                <p id="preview-text-a" class="ab-preview-text"></p>
+                                            </label>
+                                            <label class="ab-option-container">
+                                                <input type="radio" name="ab-test-select" value="B">
+                                                <span class="ab-label">Version B (Casual / Call to Action)</span>
+                                                <p id="preview-text-b" class="ab-preview-text"></p>
+                                            </label>
+                                        </div>
+
+                                        <button type="submit" class="submit-btn btn-sm" style="width: 100%;"><i class="fas fa-calendar-check"></i> Approve & Add to Queue</button>
                                     </div>
                                 </form>
                             </div>
@@ -295,6 +329,20 @@
 
                         <!-- Right pane: Real-time decision logs for comment replies -->
                         <div class="inbox-decisions-card">
+                            <!-- Multi-Agent collaboration simulator dialogues -->
+                            <div class="dashboard-card multi-agent-logs-card" style="margin-bottom: 20px;">
+                                <div class="card-header">
+                                    <h3><i class="fas fa-project-diagram"></i> Editorial Multi-Agent Collaboration Logs</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="agent-chat-window" id="agent-collab-window">
+                                        <div class="agent-chat-msg"><span class="agent-badge designer">AI Designer</span> Nimeandaa picha na font nzuri za kuvutia kulingana na trend ya leo.</div>
+                                        <div class="agent-chat-msg"><span class="agent-badge copywriter">AI Copywriter</span> Nafanyia kazi copy ya LinkedIn yenye pointi 3 muhimu.</div>
+                                        <div class="agent-chat-msg"><span class="agent-badge analyst">AI Analyst</span> Sura ya trend inaonyesha mada hii ina ufanisi wa 94%. Imependekezwa kupost saa 11:00 jioni.</div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="dashboard-card">
                                 <div class="card-header">
                                     <h3><i class="fas fa-cogs"></i> AI Auto-Responder Decision Logs</h3>
@@ -312,7 +360,54 @@
                     </div>
                 </section>
 
-                <!-- 5. INTEGRATIONS TAB -->
+                <!-- 5. COMPETITOR MONITOR TAB -->
+                <section id="tab-competitors" class="tab-panel">
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-eye"></i> Simulated Competitor Brands Feed</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="competitor-list-grid">
+                                <div class="competitor-card">
+                                    <div class="comp-header"><strong>@Competitor_BrandA</strong> <span class="badge bg-danger">HIGH POST ACTIVITY</span></div>
+                                    <p class="comp-desc">"Just launched our new product dashboard! Automate everything today."</p>
+                                    <div class="comp-meta"><span>Published: 2 hours ago</span> <span>Engagement: 480 likes</span></div>
+                                </div>
+                                <div class="competitor-card">
+                                    <div class="comp-header"><strong>@Competitor_BrandB</strong> <span class="badge bg-success">STABLE</span></div>
+                                    <p class="comp-desc">"Why manual accounting is holding your business back in 2026. A thread..."</p>
+                                    <div class="comp-meta"><span>Published: 1 day ago</span> <span>Engagement: 1.2K likes</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 6. REVENUE / SOCIAL COMMERCE TAB -->
+                <section id="tab-revenue" class="tab-panel">
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-wallet"></i> Social Commerce Conversion & Referral Revenue Tracker</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="revenue-grid">
+                                <div class="revenue-card">
+                                    <h4>Total Revenue Generated</h4>
+                                    <h2>Tsh 1,480,000</h2>
+                                </div>
+                                <div class="revenue-card">
+                                    <h4>Active Referral Links</h4>
+                                    <div class="tracking-links-list">
+                                        <div><code>boma.ai/ref/101</code> - <strong>240 clicks</strong></div>
+                                        <div><code>boma.ai/ref/102</code> - <strong>118 clicks</strong></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 7. INTEGRATIONS TAB -->
                 <section id="tab-integrations" class="tab-panel">
                     <div class="integrations-grid">
                         <div class="integration-card connected">
@@ -348,7 +443,7 @@
                     </div>
                 </section>
 
-                <!-- 6. AGENT DECISION LOGS -->
+                <!-- 8. AGENT DECISION LOGS -->
                 <section id="tab-logs" class="tab-panel">
                     <div class="dashboard-card logs-full-card">
                         <div class="card-header">
